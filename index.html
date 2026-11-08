@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيق قواعد اللغة الإنجليزية - Unit 5</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #0f172a; /* Slate 900 - Navy */
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        .eng-text {
+            font-family: 'Inter', sans-serif;
+            direction: ltr;
+            display: inline-block;
+            text-align: left;
+        }
+        
+        .gold-gradient {
+            background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .card-bg {
+            background-color: #1e293b; /* Slate 800 */
+            border: 1px solid #334155;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%); /* Teal / Turquoise */
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(20, 184, 166, 0.3);
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+            color: #1e293b;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(251, 191, 36, 0.3);
+        }
+
+        .btn-purple {
+            background: linear-gradient(135deg, #7e22ce 0%, #6b21a8 100%);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-purple:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(126, 34, 206, 0.3);
+        }
+
+        /* Certificate Styles */
+        .cert-container {
+            background: white;
+            color: #1e293b;
+            aspect-ratio: 1.414 / 1; /* A4 Landscape roughly */
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            background-image: radial-gradient(#f8fafc 20%, transparent 20%),
+                radial-gradient(#f1f5f9 20%, transparent 20%);
+            background-color: #ffffff;
+            background-position: 0 0, 50px 50px;
+            background-size: 100px 100px;
+        }
+        
+        .cert-border {
+            border: 12px solid #1e3a8a; /* Blue 900 */
+            outline: 4px solid #fbbf24; /* Gold */
+            outline-offset: -16px;
+        }
+
+        .hide-for-screenshot {
+            display: none !important;
+        }
+
+        /* Custom Radio Buttons */
+        .radio-option input:checked + div {
+            border-color: #0d9488;
+            background-color: rgba(13, 148, 136, 0.1);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-[#0f172a] border-b border-slate-700 p-4 sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto max-w-4xl flex flex-wrap justify-between items-center gap-2">
+            <div>
+                <h1 class="text-xl font-bold text-teal-400">Unit 5: Since When?</h1>
+                <h2 class="text-sm text-slate-300">3 Grammar</h2>
+            </div>
+            <div class="text-center">
+                <span class="text-xs text-slate-400 block">افهم القاعدة • تدرّب • اختبر نفسك</span>
+            </div>
+            <div class="text-left rtl:text-right flex items-center gap-3">
+                <div class="bg-slate-800 px-3 py-1 rounded-full border border-yellow-500/30">
+                    <span class="text-sm font-semibold eng-text text-yellow-400">Teacher: Mohammad AlFaifi</span>
+                </div>
+                <button id="muteBtn" onclick="toggleMute()" class="p-2 rounded-full bg-slate-800 text-slate-300 hover:text-white" title="تشغيل/كتم الصوت">
+                    🔊
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow p-4 md:p-6 container mx-auto max-w-4xl flex flex-col items-center justify-center">
+        
+        <!-- Section: Home -->
+        <section id="sec-home" class="w-full max-w-md fade-in text-center">
+            <div class="card-bg p-8 rounded-2xl">
+                <div class="w-20 h-20 mx-auto bg-purple-900 rounded-full flex items-center justify-center mb-6 border-4 border-teal-500 shadow-[0_0_15px_rgba(20,184,166,0.5)]">
+                    <span class="text-4xl">📚</span>
+                </div>
+                <h2 class="text-2xl font-bold mb-2">أهلاً بك في درس القواعد</h2>
+                <p class="text-slate-400 mb-6 text-sm">دعنا نتعلم ونمارس القواعد خطوة بخطوة</p>
+                
+                <div class="mb-6">
+                    <label for="studentName" class="block text-right text-sm font-semibold mb-2 text-teal-300">أدخل اسمك للبدء (سيظهر في الشهادة):</label>
+                    <input type="text" id="studentName" class="w-full px-4 py-3 rounded-xl bg-slate-700 border border-slate-600 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 text-white placeholder-slate-400" placeholder="الاسم الثلاثي...">
+                    <p id="nameError" class="text-red-400 text-xs text-right mt-1 hidden">عذراً، يرجى كتابة اسمك للبدء.</p>
+                </div>
+                
+                <button onclick="startApp()" class="btn-primary w-full py-3 rounded-xl font-bold text-lg flex justify-center items-center gap-2">
+                    ابدأ التعلم 🚀
+                </button>
+            </div>
+        </section>
+
+        <!-- Section: Learn -->
+        <section id="sec-learn" class="w-full hidden fade-in">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold text-teal-400">تعلّم القواعد 📖</h2>
+                <span class="bg-slate-800 text-slate-300 px-3 py-1 rounded-full text-sm font-bold" id="learnProgress">1 / 4</span>
+            </div>
+
+            <!-- Learn Card 1: Present Perfect vs Simple Past -->
+            <div class="learn-card card-bg p-6 md:p-8 rounded-2xl mb-6" id="learn-1">
+                <h3 class="text-xl font-bold text-yellow-400 mb-4 border-b border-slate-700 pb-2">المضارع التام مقابل الماضي البسيط<br><span class="eng-text text-sm text-slate-300">Present Perfect vs. Simple Past</span></h3>
+                
+                <div class="grid md:grid-cols-2 gap-6 mt-4">
+                    <div class="bg-slate-700/50 p-4 rounded-xl border-t-4 border-teal-500">
+                        <h4 class="font-bold text-teal-300 mb-2">المضارع التام (Present Perfect)</h4>
+                        <p class="text-sm mb-3">نستخدمه لحدث وقع في الماضي <strong>دون تحديد وقت حدوثه بالضبط</strong> (الوقت غير معروف أو غير مهم).</p>
+                        <div class="bg-slate-900 p-3 rounded-lg text-left eng-text w-full">
+                            <span class="text-green-400 font-bold">Have</span> you ever <span class="text-green-400 font-bold">been</span> to France?<br>
+                            Yes, I<span class="text-green-400 font-bold">'ve been</span> there.
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">ترجمة: هل سبق لك الذهاب لفرنسا؟ نعم، ذهبت إلى هناك. (لم نذكر متى)</p>
+                    </div>
+                    
+                    <div class="bg-slate-700/50 p-4 rounded-xl border-t-4 border-purple-500">
+                        <h4 class="font-bold text-purple-300 mb-2">الماضي البسيط (Simple Past)</h4>
+                        <p class="text-sm mb-3">نستخدمه عندما نتحدث عن حدث في الماضي و<strong>نذكر متى وقع بالتحديد</strong>.</p>
+                        <div class="bg-slate-900 p-3 rounded-lg text-left eng-text w-full">
+                            When <span class="text-purple-400 font-bold">were</span> you there?<br>
+                            I <span class="text-purple-400 font-bold">was</span> there <span class="text-yellow-400 underline">two years ago</span>.
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">ترجمة: متى كنت هناك؟ كنت هناك قبل سنتين. (حددنا الوقت)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learn Card 2: For and Since -->
+            <div class="learn-card card-bg p-6 md:p-8 rounded-2xl mb-6 hidden" id="learn-2">
+                <h3 class="text-xl font-bold text-yellow-400 mb-4 border-b border-slate-700 pb-2">استخدام For و Since<br><span class="eng-text text-sm text-slate-300">Present Perfect with For and Since</span></h3>
+                <p class="text-sm mb-4">نستخدمهما مع المضارع التام للحديث عن حدث بدأ في الماضي ولا يزال مستمراً حتى الآن.</p>
+                
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-slate-700/50 p-4 rounded-xl">
+                        <h4 class="font-bold text-2xl text-teal-400 mb-1 eng-text">For</h4>
+                        <p class="text-sm text-slate-300 mb-2">بمعنى "لـمدة". نستخدمها لذكر <strong>فترة أو مدة زمنية</strong> استغرقها الحدث.</p>
+                        <ul class="list-disc list-inside text-sm eng-text space-y-1 w-full text-left">
+                            <li><span class="text-teal-300">for</span> two months (لمدة شهرين)</li>
+                            <li><span class="text-teal-300">for</span> a year (لمدة سنة)</li>
+                            <li><span class="text-teal-300">for</span> a long time (لوقت طويل)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-slate-700/50 p-4 rounded-xl">
+                        <h4 class="font-bold text-2xl text-purple-400 mb-1 eng-text">Since</h4>
+                        <p class="text-sm text-slate-300 mb-2">بمعنى "منذ". نستخدمها لذكر <strong>نقطة بداية</strong> الحدث.</p>
+                        <ul class="list-disc list-inside text-sm eng-text space-y-1 w-full text-left">
+                            <li><span class="text-purple-300">since</span> yesterday (منذ الأمس)</li>
+                            <li><span class="text-purple-300">since</span> last June (منذ يونيو الماضي)</li>
+                            <li><span class="text-purple-300">since</span> 2018 (منذ عام 2018)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learn Card 3: Form (Affirmative/Negative) -->
+            <div class="learn-card card-bg p-6 md:p-8 rounded-2xl mb-6 hidden" id="learn-3">
+                <h3 class="text-xl font-bold text-yellow-400 mb-4 border-b border-slate-700 pb-2">كيف نكوّن الجملة؟<br><span class="eng-text text-sm text-slate-300">Affirmative (+) & Negative (-)</span></h3>
+                
+                <div class="space-y-4 text-left">
+                    <div class="bg-slate-800 p-4 rounded-xl border border-slate-600">
+                        <div class="text-right mb-2 text-sm text-green-400 font-bold">الإثبات (+)</div>
+                        <div class="eng-text text-base w-full flex flex-wrap gap-2 items-center">
+                            <span class="bg-slate-700 px-2 py-1 rounded">I, You, We, They</span> 
+                            <span class="text-yellow-400 font-bold">👉 've (have)</span>
+                            <span class="text-teal-400 font-bold ml-4">+ V3</span>
+                        </div>
+                        <div class="eng-text text-base w-full flex flex-wrap gap-2 items-center mt-2">
+                            <span class="bg-slate-700 px-2 py-1 rounded">He, She, It</span> 
+                            <span class="text-yellow-400 font-bold">👉 's (has)</span>
+                            <span class="text-teal-400 font-bold ml-4">+ V3</span>
+                        </div>
+                        <p class="eng-text mt-3 bg-slate-900 p-2 rounded text-sm w-full">
+                            He<span class="text-yellow-400">'s</span> <span class="text-teal-400">studied</span> English for five years.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800 p-4 rounded-xl border border-slate-600">
+                        <div class="text-right mb-2 text-sm text-red-400 font-bold">النفي (-)</div>
+                        <div class="eng-text text-base w-full flex flex-wrap gap-2 items-center">
+                            <span class="bg-slate-700 px-2 py-1 rounded">I, You, We, They</span> 
+                            <span class="text-yellow-400 font-bold">👉 haven't</span>
+                        </div>
+                        <div class="eng-text text-base w-full flex flex-wrap gap-2 items-center mt-2">
+                            <span class="bg-slate-700 px-2 py-1 rounded">He, She, It</span> 
+                            <span class="text-yellow-400 font-bold">👉 hasn't</span>
+                        </div>
+                        <p class="eng-text mt-3 bg-slate-900 p-2 rounded text-sm w-full">
+                            We <span class="text-yellow-400">haven't</span> received an email since Tuesday.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learn Card 4: How Long -->
+            <div class="learn-card card-bg p-6 md:p-8 rounded-2xl mb-6 hidden" id="learn-4">
+                <h3 class="text-xl font-bold text-yellow-400 mb-4 border-b border-slate-700 pb-2">السؤال بـ How Long<br><span class="eng-text text-sm text-slate-300">Question with How Long</span></h3>
+                
+                <p class="text-sm mb-4">نستخدم السؤال المبدوء بـ <span class="eng-text font-bold text-teal-300">How long</span> للسؤال عن المدة الزمنية التي استغرقها الحدث. (كم المدة؟)</p>
+                
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-600 text-left mb-4">
+                    <p class="eng-text text-lg w-full mb-2">
+                        <span class="text-teal-400 font-bold">How long</span> have you played football?
+                    </p>
+                    <p class="text-right text-xs text-slate-400 mb-4">ترجمة: كم المدة التي لعبت فيها كرة القدم؟</p>
+                    
+                    <div class="eng-text text-base w-full pl-4 border-l-2 border-slate-600">
+                        I've played football <span class="text-purple-400 font-bold">for</span> three years.<br>
+                        <span class="text-slate-400 text-sm block mb-2">أو (or)</span>
+                        I've played football <span class="text-yellow-400 font-bold">since</span> I was 12.
+                    </div>
+                </div>
+                
+                <div class="bg-red-900/30 p-3 rounded-lg border-r-4 border-red-500 mt-4 text-sm">
+                    <h5 class="font-bold text-red-400 mb-1">خطأ شائع ✗</h5>
+                    <p class="eng-text text-left w-full block mb-1">How long you have played? ✗</p>
+                    <p class="text-slate-300">التصحيح: في السؤال نعكس بين الفاعل والفعل المساعد.<br> <span class="eng-text text-green-400">How long have you played? ✓</span></p>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center w-full mt-4">
+                <button onclick="prevLearn()" id="btnPrevLearn" class="px-6 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-white font-bold opacity-50 cursor-not-allowed transition" disabled>السابق</button>
+                <button onclick="nextLearn()" id="btnNextLearn" class="px-6 py-2 rounded-lg btn-primary font-bold">التالي</button>
+            </div>
+        </section>
+
+        <!-- Section: Practice -->
+        <section id="sec-practice" class="w-full hidden fade-in">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-teal-400">تدريب تفاعلي 💡</h2>
+                <div class="text-sm font-bold bg-slate-800 px-4 py-2 rounded-full shadow-inner border border-slate-700">
+                    سؤال <span id="pracCurrent" class="text-teal-400">1</span> من <span id="pracTotal">10</span>
+                </div>
+            </div>
+
+            <div class="card-bg p-6 md:p-8 rounded-2xl relative">
+                <p class="text-slate-300 text-sm mb-4" id="pracInstruction">اختر الإجابة الصحيحة لإكمال الجملة:</p>
+                
+                <div class="text-xl md:text-2xl mb-8 font-bold eng-text text-center w-full bg-slate-900 py-6 rounded-xl border border-slate-700 shadow-inner" id="pracQuestion">
+                    <!-- Question text injected here -->
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="pracOptions">
+                    <!-- Options injected here -->
+                </div>
+
+                <!-- Feedback Overlay -->
+                <div id="pracFeedback" class="hidden mt-6 p-4 rounded-xl border">
+                    <h4 id="pracFeedbackTitle" class="font-bold text-lg mb-2"></h4>
+                    <p id="pracFeedbackText" class="text-sm text-slate-200"></p>
+                    <button onclick="nextPractice()" id="btnNextPractice" class="mt-4 w-full py-2 btn-primary rounded-lg font-bold">السؤال التالي</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Test Instructions -->
+        <section id="sec-test-intro" class="w-full hidden fade-in text-center">
+            <div class="card-bg p-8 rounded-2xl">
+                <div class="w-20 h-20 mx-auto bg-yellow-600 rounded-full flex items-center justify-center mb-6 shadow-[0_0_15px_rgba(251,191,36,0.5)]">
+                    <span class="text-4xl">📝</span>
+                </div>
+                <h2 class="text-2xl font-bold mb-4 text-yellow-400">التقييم النهائي</h2>
+                <p class="text-slate-300 mb-6 text-sm">لقد أنهيت التدريب بنجاح! الآن سنختبر فهمك بـ 15 سؤالاً بدون مساعدة لتستخرج شهادتك.</p>
+                <ul class="text-right text-sm text-slate-400 list-disc list-inside mb-8 bg-slate-800 p-4 rounded-lg">
+                    <li>لا يمكن التراجع عن الإجابة بعد اختيارها.</li>
+                    <li>يجب إكمال جميع الأسئلة لرؤية النتيجة.</li>
+                    <li>في النهاية ستحصل على شهادة بنتيجتك.</li>
+                </ul>
+                <button onclick="startTest()" class="btn-gold w-full py-3 rounded-xl font-bold text-lg">
+                    ابدأ الاختبار
+                </button>
+            </div>
+        </section>
+
+        <!-- Section: Test -->
+        <section id="sec-test" class="w-full hidden fade-in">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-yellow-400">التقييم النهائي</h2>
+                <div class="text-sm font-bold bg-slate-800 px-4 py-2 rounded-full border border-slate-700">
+                    <span id="testCurrent" class="text-yellow-400">1</span> / <span id="testTotal">15</span>
+                </div>
+            </div>
+            
+            <div class="w-full bg-slate-700 rounded-full h-2 mb-6">
+                <div class="bg-yellow-400 h-2 rounded-full transition-all duration-300" id="testProgressBar" style="width: 0%"></div>
+            </div>
+
+            <div class="card-bg p-6 md:p-8 rounded-2xl">
+                <p class="text-slate-300 text-sm mb-4" id="testInstruction">اختر الإجابة الصحيحة:</p>
+                
+                <div class="text-xl md:text-2xl mb-8 font-bold eng-text text-center w-full bg-slate-900 py-6 rounded-xl border border-slate-700 shadow-inner" id="testQuestion">
+                    <!-- Question injected here -->
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="testOptions">
+                    <!-- Options injected here -->
+                </div>
+                
+                <div class="mt-6 text-left rtl:text-right hidden" id="testNextContainer">
+                     <button onclick="nextTest()" class="px-8 py-3 btn-gold rounded-xl font-bold">تأكيد الإجابة</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Result -->
+        <section id="sec-result" class="w-full hidden fade-in">
+            <div class="card-bg p-8 rounded-2xl text-center mb-6">
+                <h2 class="text-3xl font-bold mb-2">النتيجة النهائية 🎯</h2>
+                <p id="resultStudentName" class="text-teal-400 font-bold mb-6"></p>
+                
+                <div class="relative w-40 h-40 mx-auto mb-6">
+                    <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                        <path class="text-slate-700" stroke-width="3" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        <path id="scoreCircle" class="text-teal-400" stroke-width="3" stroke-dasharray="100, 100" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    </svg>
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl font-bold">
+                        <span id="scoreText">0</span>%
+                    </div>
+                </div>
+
+                <div class="flex justify-center gap-4 text-sm mb-6">
+                    <div class="bg-slate-800 px-4 py-2 rounded-lg border border-green-500/30">
+                        <span class="block text-slate-400">إجابات صحيحة</span>
+                        <span class="text-green-400 font-bold text-lg" id="correctCount">0</span>
+                    </div>
+                    <div class="bg-slate-800 px-4 py-2 rounded-lg border border-red-500/30">
+                        <span class="block text-slate-400">إجابات خاطئة</span>
+                        <span class="text-red-400 font-bold text-lg" id="wrongCount">0</span>
+                    </div>
+                </div>
+                
+                <p id="recommendationText" class="text-yellow-400 text-sm mb-6 font-bold"></p>
+
+                <div class="flex flex-col md:flex-row gap-3 justify-center">
+                    <button onclick="showCertificate()" class="btn-gold py-3 px-6 rounded-xl font-bold shadow-lg flex items-center justify-center gap-2">
+                        📜 عرض الشهادة للحفظ
+                    </button>
+                    <button onclick="reviewErrors()" id="btnReview" class="btn-purple py-3 px-6 rounded-xl font-bold hidden">
+                        🔍 مراجعة الأخطاء
+                    </button>
+                    <button onclick="restartTest()" class="bg-slate-700 hover:bg-slate-600 py-3 px-6 rounded-xl font-bold text-white transition">
+                        🔄 إعادة التقييم
+                    </button>
+                </div>
+            </div>
+
+            <!-- Error Review Section -->
+            <div id="errorsContainer" class="hidden">
+                <h3 class="text-xl font-bold mb-4 text-red-400">الأخطاء والتصحيح:</h3>
+                <div id="errorsList" class="space-y-4"></div>
+            </div>
+        </section>
+
+        <!-- Section: Certificate -->
+        <section id="sec-cert" class="w-full hidden fade-in max-w-full">
+            <div id="certTools" class="mb-4 flex flex-col md:flex-row justify-between items-center gap-4 bg-slate-800 p-4 rounded-xl">
+                <div class="text-sm">
+                    <p class="font-bold text-teal-400 mb-1">لحفظ شهادتك:</p>
+                    <p class="text-slate-300 text-xs">اعرضها كاملة، ثم التقط لقطة شاشة (Screenshot) بأزرار جهازك. يمكنك قص الحواف ومشاركتها لاحقاً.</p>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="toggleCertView()" class="btn-primary px-4 py-2 rounded-lg text-sm font-bold">وضع ملء الشاشة للقطة</button>
+                    <button onclick="closeCertificate()" class="bg-slate-600 hover:bg-slate-500 px-4 py-2 rounded-lg text-sm font-bold text-white transition">إغلاق</button>
+                </div>
+            </div>
+
+            <div id="fullscreenInstructions" class="hidden text-center mb-4 bg-blue-900/50 p-2 rounded text-blue-200 text-sm">
+                التقط الشاشة الآن. اضغط على أي مكان في الشهادة للعودة.
+            </div>
+
+            <div class="overflow-x-auto w-full flex justify-center pb-8" id="certWrapper">
+                <!-- Certificate UI -->
+                <div class="cert-container w-full shadow-2xl p-4 md:p-8 cursor-pointer" onclick="if(document.getElementById('certTools').classList.contains('hide-for-screenshot')) toggleCertView();">
+                    <div class="cert-border w-full h-full p-6 md:p-10 flex flex-col items-center justify-between text-center relative overflow-hidden">
+                        
+                        <!-- Watermark/Decorations -->
+                        <div class="absolute top-0 left-0 w-32 h-32 opacity-10 pointer-events-none">
+                            <svg viewBox="0 0 100 100" fill="#1e3a8a"><polygon points="0,0 100,0 0,100"/></svg>
+                        </div>
+                        <div class="absolute bottom-0 right-0 w-32 h-32 opacity-10 pointer-events-none">
+                            <svg viewBox="0 0 100 100" fill="#1e3a8a"><polygon points="100,100 0,100 100,0"/></svg>
+                        </div>
+
+                        <!-- Header -->
+                        <div class="w-full text-center">
+                            <h1 class="text-3xl md:text-5xl font-extrabold uppercase tracking-widest eng-text text-[#1e3a8a] mb-2" style="font-family: 'Times New Roman', serif;">Certificate of Completion</h1>
+                            <h2 class="text-xl md:text-2xl font-bold text-[#b45309]">شهـــــادة إنجـــــاز</h2>
+                        </div>
+
+                        <!-- Body -->
+                        <div class="w-full my-6 flex-grow flex flex-col justify-center">
+                            <p class="text-slate-600 mb-2 md:text-lg">تشهد منصة القواعد التفاعلية أن الطالب/ـة</p>
+                            <h3 id="certName" class="text-2xl md:text-4xl font-bold text-[#1e3a8a] mb-4 border-b-2 border-[#fbbf24] pb-2 inline-block mx-auto max-w-[80%] break-words"></h3>
+                            <p class="text-slate-600 mb-4 md:text-lg">قد أكمل أنشطة درس القواعد والتقييم النهائي</p>
+                            
+                            <div class="bg-[#f8fafc] p-4 rounded-lg border border-slate-200 inline-block mx-auto min-w-[60%]">
+                                <p class="eng-text font-bold text-lg md:text-xl text-[#0f766e]">Unit 5: Since When? (Grammar)</p>
+                                <div class="flex justify-center gap-8 mt-3 text-sm md:text-base font-bold text-slate-700">
+                                    <p>الدرجة: <span id="certScore" class="eng-text text-[#b45309]"></span></p>
+                                    <p>النسبة: <span id="certPercent" class="eng-text text-[#b45309]"></span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="w-full flex justify-between items-end px-4 md:px-12 mt-4">
+                            <div class="text-center">
+                                <p class="eng-text text-sm text-slate-500 mb-1">Date</p>
+                                <p id="certDate" class="eng-text font-bold text-[#1e3a8a] border-t border-slate-400 pt-1 w-24 mx-auto"></p>
+                            </div>
+                            
+                            <div class="w-20 h-20 bg-yellow-100 rounded-full border-4 border-[#fbbf24] flex items-center justify-center shadow-inner relative z-10">
+                                <span class="text-3xl">🌟</span>
+                            </div>
+
+                            <div class="text-center">
+                                <p class="eng-text text-sm text-slate-500 mb-1">Teacher</p>
+                                <p class="eng-text font-bold text-[#1e3a8a] border-t border-slate-400 pt-1 px-4 text-sm md:text-base whitespace-nowrap">Mohammad AlFaifi</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Audio System (Web Audio API)
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let audioCtx;
+        let isMuted = false;
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new AudioContext();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        function toggleMute() {
+            isMuted = !isMuted;
+            document.getElementById('muteBtn').textContent = isMuted ? '🔇' : '🔊';
+        }
+
+        function playTone(freq, type, duration, vol=0.1) {
+            if (isMuted) return;
+            try {
+                initAudio();
+                const oscillator = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+                oscillator.type = type;
+                oscillator.frequency.value = freq;
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                oscillator.start();
+                gainNode.gain.setValueAtTime(vol, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + duration);
+                oscillator.stop(audioCtx.currentTime + duration);
+            } catch(e) { console.log('Audio error:', e); }
+        }
+
+        function playSuccessSound() {
+            playTone(600, 'sine', 0.1, 0.1);
+            setTimeout(() => playTone(800, 'sine', 0.2, 0.1), 100);
+        }
+
+        function playErrorSound() {
+            playTone(300, 'triangle', 0.3, 0.1);
+        }
+
+        function playCompleteSound() {
+            playTone(400, 'sine', 0.1);
+            setTimeout(() => playTone(500, 'sine', 0.1), 100);
+            setTimeout(() => playTone(600, 'sine', 0.2), 200);
+            setTimeout(() => playTone(800, 'sine', 0.4), 300);
+        }
+
+        // Data Base
+        const practiceData = [
+            { rule: "for/since", q: "Hameed has had the same TV _____ 15 years.", options: ["for", "since", "in", "at"], ans: 0, exp: "نستخدم for لأن (15 years) هي مدة زمنية استغرقها الحدث." },
+            { rule: "for/since", q: "I've had my laptop _____ last June.", options: ["for", "since", "on", "from"], ans: 1, exp: "نستخدم since لأن (last June) هي نقطة بداية الحدث." },
+            { rule: "for/since", q: "We've worked on this project _____ a month.", options: ["since", "for", "ago", "to"], ans: 1, exp: "نستخدم for لأن (a month) تعتبر مدة أو فترة زمنية." },
+            { rule: "for/since", q: "My friends haven't visited me _____ my graduation.", options: ["for", "since", "when", "in"], ans: 1, exp: "نستخدم since لأن (my graduation - تخرجي) هو وقت محدد لبداية الحدث." },
+            { rule: "for/since", q: "We haven't used our car _____ a long time.", options: ["since", "for", "from", "at"], ans: 1, exp: "العبارة a long time تدل على مدة، لذلك نستخدم for." },
+            { rule: "for/since", q: "Tariq has worn glasses _____ the age of seven.", options: ["for", "since", "when", "in"], ans: 1, exp: "عمر السابعة يعتبر نقطة بداية، لذلك نستخدم since." },
+            { rule: "for/since", q: "_____ when have you had that beautiful watch?", options: ["For", "Since", "In", "At"], ans: 1, exp: "للسؤال عن وقت البداية بالضبط نقول Since when (منذ متى)." },
+            { rule: "tense", q: "Have you ever _____ to France?", options: ["be", "was", "been", "were"], ans: 2, exp: "في المضارع التام نستخدم التصريف الثالث للفعل (been)." },
+            { rule: "tense", q: "A: When _____ you there? \n B: I was there two years ago.", options: ["have", "were", "are", "was"], ans: 1, exp: "لأننا نسأل عن وقت محدد في الماضي (When)، نستخدم الماضي البسيط (were)." },
+            { rule: "how long", q: "_____ have you played football?", options: ["How long", "How much", "Since long", "When long"], ans: 0, exp: "نسأل عن المدة الزمنية باستخدام (How long)." },
+            { rule: "form", q: "He _____ studied English for five years.", options: ["have", "has", "is", "was"], ans: 1, exp: "الضمير He يأخذ has في المضارع التام." },
+            { rule: "form", q: "They _____ received an email since Tuesday.", options: ["hasn't", "haven't", "didn't", "don't"], ans: 1, exp: "الضمير They يأخذ haven't في النفي للمضارع التام." }
+        ];
+
+        const testData = [
+            { rule: "for/since", q: "I have lived here _____ 2018.", options: ["for", "since", "in", "from"], ans: 1 },
+            { rule: "for/since", q: "She has been a teacher _____ several years.", options: ["since", "for", "in", "to"], ans: 1 },
+            { rule: "for/since", q: "They haven't seen Ali _____ yesterday.", options: ["for", "since", "at", "on"], ans: 1 },
+            { rule: "for/since", q: "We've been friends _____ childhood.", options: ["for", "since", "from", "in"], ans: 1 },
+            { rule: "for/since", q: "I have waited _____ three hours.", options: ["since", "for", "at", "in"], ans: 1 },
+            { rule: "tense", q: "_____ you ever visited the museum?", options: ["Has", "Have", "Did", "Are"], ans: 1 },
+            { rule: "tense", q: "Yes, I _____ there last week.", options: ["have been", "am", "was", "were"], ans: 2 },
+            { rule: "tense", q: "I have _____ this car since 2020.", options: ["have", "had", "has", "having"], ans: 1 },
+            { rule: "how long", q: "_____ have you learned English?", options: ["How many", "How long", "How time", "Since when long"], ans: 1 },
+            { rule: "form", q: "She _____ finished her homework yet.", options: ["haven't", "hasn't", "isn't", "wasn't"], ans: 1 },
+            { rule: "tense", q: "When _____ he arrive?", options: ["has", "have", "did", "is"], ans: 2 },
+            { rule: "form", q: "We _____ played tennis for a long time.", options: ["has", "have", "are", "were"], ans: 1 },
+            { rule: "how long", q: "A: How long has he slept?\nB: He has slept _____ 10 PM.", options: ["for", "since", "at", "in"], ans: 1 },
+            { rule: "tense", q: "I _____ that movie two days ago.", options: ["have seen", "saw", "see", "seen"], ans: 1 },
+            { rule: "for/since", q: "It hasn't rained _____ a month.", options: ["since", "for", "in", "at"], ans: 1 }
+        ];
+
+        // App State
+        let state = {
+            studentName: "",
+            learnIndex: 1,
+            practiceIndex: 0,
+            testIndex: 0,
+            testScore: 0,
+            testAnswers: [],
+            practiceAttempted: false
+        };
+
+        // Navigation Functions
+        function hideAllSections() {
+            ['sec-home', 'sec-learn', 'sec-practice', 'sec-test-intro', 'sec-test', 'sec-result', 'sec-cert'].forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+            });
+        }
+
+        function startApp() {
+            initAudio();
+            const nameInput = document.getElementById('studentName').value.trim();
+            if (nameInput === "") {
+                document.getElementById('nameError').classList.remove('hidden');
+                return;
+            }
+            state.studentName = nameInput;
+            document.getElementById('nameError').classList.add('hidden');
+            hideAllSections();
+            document.getElementById('sec-learn').classList.remove('hidden');
+            updateLearnUI();
+        }
+
+        // Learn Logic
+        const totalLearnCards = 4;
+        function updateLearnUI() {
+            for(let i=1; i<=totalLearnCards; i++) {
+                document.getElementById(`learn-${i}`).classList.add('hidden');
+            }
+            document.getElementById(`learn-${state.learnIndex}`).classList.remove('hidden');
+            document.getElementById('learnProgress').innerText = `${state.learnIndex} / ${totalLearnCards}`;
+            
+            document.getElementById('btnPrevLearn').disabled = state.learnIndex === 1;
+            if(state.learnIndex === 1) {
+                document.getElementById('btnPrevLearn').classList.add('opacity-50', 'cursor-not-allowed');
+            } else {
+                document.getElementById('btnPrevLearn').classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+
+            if(state.learnIndex === totalLearnCards) {
+                document.getElementById('btnNextLearn').innerText = 'انتقل للتدريب 💡';
+            } else {
+                document.getElementById('btnNextLearn').innerText = 'التالي';
+            }
+        }
+
+        function nextLearn() {
+            if(state.learnIndex < totalLearnCards) {
+                state.learnIndex++;
+                updateLearnUI();
+            } else {
+                startPracticeSection();
+            }
+        }
+
+        function prevLearn() {
+            if(state.learnIndex > 1) {
+                state.learnIndex--;
+                updateLearnUI();
+            }
+        }
+
+        // Practice Logic
+        function startPracticeSection() {
+            hideAllSections();
+            document.getElementById('sec-practice').classList.remove('hidden');
+            state.practiceIndex = 0;
+            document.getElementById('pracTotal').innerText = practiceData.length;
+            loadPracticeQuestion();
+        }
+
+        function loadPracticeQuestion() {
+            const q = practiceData[state.practiceIndex];
+            document.getElementById('pracCurrent').innerText = state.practiceIndex + 1;
+            document.getElementById('pracQuestion').innerText = q.q;
+            
+            const optionsContainer = document.getElementById('pracOptions');
+            optionsContainer.innerHTML = '';
+            document.getElementById('pracFeedback').classList.add('hidden');
+            state.practiceAttempted = false;
+
+            q.options.forEach((opt, idx) => {
+                const div = document.createElement('div');
+                div.className = 'bg-slate-800 border border-slate-600 rounded-xl p-4 cursor-pointer hover:bg-slate-700 transition eng-text text-center text-lg';
+                div.innerText = opt;
+                div.onclick = () => handlePracticeAnswer(idx, div);
+                optionsContainer.appendChild(div);
+            });
+        }
+
+        function handlePracticeAnswer(selectedIdx, element) {
+            if (state.practiceAttempted && document.getElementById('pracFeedbackTitle').innerText.includes('أحسنت')) return; // Prevent changing after correct
+            
+            const q = practiceData[state.practiceIndex];
+            const feedbackBox = document.getElementById('pracFeedback');
+            const title = document.getElementById('pracFeedbackTitle');
+            const text = document.getElementById('pracFeedbackText');
+            
+            Array.from(document.getElementById('pracOptions').children).forEach(el => el.classList.remove('border-green-500', 'border-red-500', 'bg-green-900/30', 'bg-red-900/30'));
+
+            if (selectedIdx === q.ans) {
+                playSuccessSound();
+                element.classList.add('border-green-500', 'bg-green-900/30');
+                feedbackBox.classList.remove('hidden', 'bg-red-900/20', 'border-red-500');
+                feedbackBox.classList.add('bg-green-900/20', 'border-green-500');
+                title.innerText = 'أحسنت! إجابة صحيحة ✓';
+                title.className = 'font-bold text-lg mb-2 text-green-400';
+                text.innerText = q.exp;
+                state.practiceAttempted = true;
+                
+                if(state.practiceIndex === practiceData.length - 1) {
+                    document.getElementById('btnNextPractice').innerText = 'انتقل للتقييم النهائي 📝';
+                } else {
+                    document.getElementById('btnNextPractice').innerText = 'السؤال التالي';
+                }
+
+            } else {
+                playErrorSound();
+                element.classList.add('border-red-500', 'bg-red-900/30');
+                feedbackBox.classList.remove('hidden', 'bg-green-900/20', 'border-green-500');
+                feedbackBox.classList.add('bg-red-900/20', 'border-red-500');
+                title.innerText = 'حاول مرة أخرى ✗';
+                title.className = 'font-bold text-lg mb-2 text-red-400';
+                text.innerText = 'تذكر القاعدة.. اقرأ الجملة بتركيز وجرب خياراً آخر.';
+            }
+        }
+
+        function nextPractice() {
+            if(state.practiceIndex < practiceData.length - 1) {
+                state.practiceIndex++;
+                loadPracticeQuestion();
+            } else {
+                hideAllSections();
+                document.getElementById('sec-test-intro').classList.remove('hidden');
+            }
+        }
+
+        // Test Logic
+        function startTest() {
+            hideAllSections();
+            document.getElementById('sec-test').classList.remove('hidden');
+            state.testIndex = 0;
+            state.testScore = 0;
+            state.testAnswers = [];
+            document.getElementById('testTotal').innerText = testData.length;
+            loadTestQuestion();
+        }
+
+        let selectedTestAnswer = null;
+
+        function loadTestQuestion() {
+            const q = testData[state.testIndex];
+            selectedTestAnswer = null;
+            document.getElementById('testCurrent').innerText = state.testIndex + 1;
+            document.getElementById('testQuestion').innerText = q.q;
+            document.getElementById('testProgressBar').style.width = `${((state.testIndex) / testData.length) * 100}%`;
+            
+            const optionsContainer = document.getElementById('testOptions');
+            optionsContainer.innerHTML = '';
+            document.getElementById('testNextContainer').classList.add('hidden');
+
+            q.options.forEach((opt, idx) => {
+                const label = document.createElement('label');
+                label.className = 'radio-option cursor-pointer block';
+                label.innerHTML = `
+                    <input type="radio" name="testQ" class="hidden" value="${idx}">
+                    <div class="bg-slate-800 border border-slate-600 rounded-xl p-4 hover:bg-slate-700 transition eng-text text-center text-lg flex items-center justify-center gap-2">
+                        <span>${opt}</span>
+                    </div>
+                `;
+                label.querySelector('input').addEventListener('change', (e) => {
+                    selectedTestAnswer = parseInt(e.target.value);
+                    document.getElementById('testNextContainer').classList.remove('hidden');
+                    
+                    // visual update
+                    Array.from(optionsContainer.querySelectorAll('div')).forEach(div => {
+                        div.classList.remove('border-teal-500', 'bg-teal-900/30');
+                        div.classList.add('border-slate-600');
+                    });
+                    label.querySelector('div').classList.remove('border-slate-600');
+                    label.querySelector('div').classList.add('border-teal-500', 'bg-teal-900/30');
+                });
+                optionsContainer.appendChild(label);
+            });
+        }
+
+        function nextTest() {
+            if (selectedTestAnswer === null) return;
+
+            const q = testData[state.testIndex];
+            const isCorrect = (selectedTestAnswer === q.ans);
+            if (isCorrect) state.testScore++;
+            
+            state.testAnswers.push({
+                question: q.q,
+                userAnswer: q.options[selectedTestAnswer],
+                correctAnswer: q.options[q.ans],
+                isCorrect: isCorrect
+            });
+
+            if (state.testIndex < testData.length - 1) {
+                state.testIndex++;
+                loadTestQuestion();
+            } else {
+                document.getElementById('testProgressBar').style.width = '100%';
+                finishTest();
+            }
+        }
+
+        function finishTest() {
+            playCompleteSound();
+            hideAllSections();
+            document.getElementById('sec-result').classList.remove('hidden');
+            
+            const percent = Math.round((state.testScore / testData.length) * 100);
+            
+            document.getElementById('resultStudentName').innerText = `الطالب: ${state.studentName}`;
+            
+            // Animate Score
+            let currentDisplay = 0;
+            const scoreText = document.getElementById('scoreText');
+            const scoreCircle = document.getElementById('scoreCircle');
+            
+            const dashArray = 100;
+            scoreCircle.style.strokeDashoffset = dashArray;
+            
+            const interval = setInterval(() => {
+                if (currentDisplay >= percent) {
+                    clearInterval(interval);
+                    currentDisplay = percent;
+                } else {
+                    currentDisplay++;
+                }
+                scoreText.innerText = currentDisplay;
+                const offset = dashArray - (dashArray * currentDisplay) / 100;
+                scoreCircle.style.strokeDashoffset = offset;
+            }, 20);
+
+            document.getElementById('correctCount').innerText = state.testScore;
+            document.getElementById('wrongCount').innerText = testData.length - state.testScore;
+
+            if (percent === 100) {
+                document.getElementById('recommendationText').innerText = "ممتاز جداً! إتقان تام للقاعدة.";
+                document.getElementById('recommendationText').className = "text-green-400 text-lg mb-6 font-bold";
+            } else if (percent >= 70) {
+                document.getElementById('recommendationText').innerText = "عمل جيد! لديك بعض الأخطاء البسيطة.";
+                document.getElementById('recommendationText').className = "text-teal-400 text-lg mb-6 font-bold";
+            } else {
+                document.getElementById('recommendationText').innerText = "تحتاج إلى مراجعة القواعد والتدرب أكثر.";
+                document.getElementById('recommendationText').className = "text-yellow-400 text-lg mb-6 font-bold";
+            }
+
+            if (state.testScore < testData.length) {
+                document.getElementById('btnReview').classList.remove('hidden');
+                generateErrorList();
+            } else {
+                document.getElementById('btnReview').classList.add('hidden');
+                document.getElementById('errorsContainer').classList.add('hidden');
+            }
+
+            // Prep Certificate Data
+            prepareCertificate(percent);
+        }
+
+        function generateErrorList() {
+            const list = document.getElementById('errorsList');
+            list.innerHTML = '';
+            let errorCount = 1;
+            state.testAnswers.forEach((ans) => {
+                if (!ans.isCorrect) {
+                    const div = document.createElement('div');
+                    div.className = 'bg-slate-800 p-4 rounded-xl border-r-4 border-red-500 text-left';
+                    div.innerHTML = `
+                        <p class="eng-text text-lg w-full font-bold mb-2 text-slate-200">${errorCount}. ${ans.question}</p>
+                        <p class="text-sm eng-text w-full mb-1">
+                            <span class="text-slate-400">Your answer:</span> 
+                            <span class="text-red-400 line-through">${ans.userAnswer}</span>
+                        </p>
+                        <p class="text-sm eng-text w-full bg-slate-900 p-2 rounded">
+                            <span class="text-slate-400">Correct:</span> 
+                            <span class="text-green-400 font-bold">${ans.correctAnswer} ✓</span>
+                        </p>
+                    `;
+                    list.appendChild(div);
+                    errorCount++;
+                }
+            });
+        }
+
+        function reviewErrors() {
+            document.getElementById('errorsContainer').classList.toggle('hidden');
+            if(!document.getElementById('errorsContainer').classList.contains('hidden')) {
+                document.getElementById('errorsContainer').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function restartTest() {
+            startTest();
+        }
+
+        // Certificate Logic
+        function prepareCertificate(percent) {
+            document.getElementById('certName').innerText = state.studentName;
+            document.getElementById('certScore').innerText = `${state.testScore} / ${testData.length}`;
+            document.getElementById('certPercent').innerText = `${percent}%`;
+            
+            const today = new Date();
+            const dateStr = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
+            document.getElementById('certDate').innerText = dateStr;
+        }
+
+        function showCertificate() {
+            hideAllSections();
+            document.getElementById('sec-cert').classList.remove('hidden');
+            // reset view
+            document.getElementById('certTools').classList.remove('hide-for-screenshot');
+            document.getElementById('fullscreenInstructions').classList.add('hidden');
+        }
+
+        function closeCertificate() {
+            hideAllSections();
+            document.getElementById('sec-result').classList.remove('hidden');
+        }
+
+        function toggleCertView() {
+            const tools = document.getElementById('certTools');
+            const instructions = document.getElementById('fullscreenInstructions');
+            const header = document.querySelector('header');
+            
+            if (tools.classList.contains('hide-for-screenshot')) {
+                // Restore
+                tools.classList.remove('hide-for-screenshot');
+                instructions.classList.add('hidden');
+                header.classList.remove('hide-for-screenshot');
+                document.body.style.backgroundColor = '#0f172a'; // restore bg
+            } else {
+                // Prepare for screenshot
+                tools.classList.add('hide-for-screenshot');
+                instructions.classList.remove('hidden');
+                header.classList.add('hide-for-screenshot');
+                document.body.style.backgroundColor = '#000000'; // dark bg for contrast
+                window.scrollTo(0,0);
+            }
+        }
+    </script>
+</body>
+</html>
